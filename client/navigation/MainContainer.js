@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import { View,Text } from 'react-native';
+import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
@@ -16,9 +16,11 @@ export default function MainContainer(){
     const[fighters, setFighters] = useState([])
     useEffect(() => {
         (async() => {
-            let req = await fetch('http://localhost:3000/fighters')
+            let req = await fetch('http://127.0.0.1:3000/fighters')
+            if (req.ok){
             let res = await req.json()
-            setFighters(res)
+            setFighters(res)}
+            else (req.catch(error)) 
         })()   
        }, [])
 return (
@@ -49,7 +51,7 @@ return (
         
         >
 
-            <Tab.Screen name={versus} children={() => <Versus fighters={fighters}/>}
+            <Tab.Screen style= {{alignItems: 'center'}} name={versus} children={() => <Versus fighters={fighters}/>}
             />
             <Tab.Screen name={fightersPage} children={() => <Fighters fighters={fighters}/>}/>
 

@@ -30,8 +30,8 @@
       "ssbTB": "34%",
       "ssbTL": "17%",
       "img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2022-04/STERLING_ALJAMAIN_L_BELT_04-09.png?itok=9jHYZcT2",
-      "weightclass_id": 1,
-      "promotion_id": 1
+      "weightclass_id": 2,
+        "promotion_id": 1
     },
     {
       "nickname": "No Mercy",
@@ -64,8 +64,8 @@
       "ssbTB": "20%",
       "ssbTL": "9%",
       "img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-10/69008%252Fprofile-galery%252Ffullbodyleft-picture%252FYAN_PETR_L_10-30.png?itok=El2YOHNK",
-      "weightclass_id": 1,
-      "promotion_id": 1
+      "weightclass_id": 2,
+        "promotion_id": 1
     },
     {
       "nickname": "Killashaw",
@@ -98,7 +98,7 @@
       "ssbTB": "14%",
       "ssbTL": "19%",
       "img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-07/DILLASHAW_TJ_L_07-24.png?itok=iWWWrBlv",
-      "weightclass_id": 1,
+      "weightclass_id": 2,
       "promotion_id": 1
     },
     {
@@ -132,8 +132,8 @@
       "ssbTB": "19%",
       "ssbTL": "15%",
       "img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2022-03/d44b164d-b5ae-4594-959e-12a7d6343803%252FALDO_JOSE_L_12-04.png?itok=Q4ck0MXP",
-      "weightclass_id": 1,
-      "promotion_id": 1
+      "weightclass_id": 2,
+        "promotion_id": 1
     },
     {
       "nickname": "",
@@ -166,8 +166,8 @@
       "ssbTB": "15%",
       "ssbTL": "17%",
       "img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-07/67675%252Fprofile-galery%252Ffullbodyleft-picture%252FSANDHAGEN_CORY_L_07-24.png?itok=glHelPuB",
-      "weightclass_id": 1,
-      "promotion_id": 1
+      "weightclass_id": 2,
+        "promotion_id": 1
     },
     {
       "nickname": "Chito",
@@ -200,8 +200,8 @@
       "ssbTB": "23%",
       "ssbTL": "24%",
       "img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-06/68723%252Fprofile-galery%252Ffullbodyleft-picture%252FVERA_MARLON_L_06-19.png?VersionId=null&itok=w3lN7DM4",
-      "weightclass_id": 1,
-      "promotion_id": 1
+      "weightclass_id": 2,
+        "promotion_id": 1
     },
     {
       "nickname": "The Machine",
@@ -234,8 +234,8 @@
       "ssbTB": "15%",
       "ssbTL": "17%",
       "img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-04/69653%252Fprofile-galery%252Ffullbodyleft-picture%252FDVALISHVILI_MERAB_L_05-01.png?VersionId=null&itok=4h0KKhBt",
-      "weightclass_id": 1,
-      "promotion_id": 1
+      "weightclass_id": 2,
+        "promotion_id": 1
     },
     {
       "nickname": "",
@@ -268,8 +268,8 @@
       "ssbTB": "18%",
       "ssbTL": "8%",
       "img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2022-04/96838c46-0a5d-403d-b53d-46178b380f21%252FFONT_ROB_L_04-30.png?itok=hx0krZJK",
-      "weightclass_id": 1,
-      "promotion_id": 1
+      "weightclass_id": 2,
+        "promotion_id": 1
     },
     {
       "nickname": "The Dominator",
@@ -302,8 +302,8 @@
       "ssbTB": "19%",
       "ssbTL": "14%",
       "img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2022-03/7a064993-dfca-4c8e-aca4-8268fc6e711b%252FCRUZ_DOMINICK_L_12-11.png?itok=hesZixtu",
-      "weightclass_id": 1,
-      "promotion_id": 1
+      "weightclass_id": 2,
+        "promotion_id": 1
     },
     {
       "nickname": "",
@@ -336,8 +336,8 @@
       "ssbTB": "21%",
       "ssbTL": "14%",
       "img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-08/69674%252Fprofile-galery%252Ffullbodyleft-picture%252FSONG_YADONG_L_08-07.png?itok=ZFXeOlib",
-      "weightclass_id": 1,
-      "promotion_id": 1
+      "weightclass_id": 2,
+        "promotion_id": 1
     },
     {
       "nickname": "The Young Punisher",
@@ -370,8 +370,8 @@
       "ssbTB": "17%",
       "ssbTL": "29%",
       "img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-08/68999%252Fprofile-galery%252Ffullbodyleft-picture%252FMUNHOZ_PEDRO_L_08-07.png?itok=AqOvDIUC",
-      "weightclass_id": 1,
-      "promotion_id": 1
+      "weightclass_id": 2,
+        "promotion_id": 1
     },
     {
       "nickname": "The Answer",
@@ -404,8 +404,8 @@
       "ssbTB": "19%",
       "ssbTL": "14%",
       "img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-11/67978%252Fprofile-galery%252Ffullbodyleft-picture%252FEDGAR_FRANKIE_L_11-06.png?itok=GirRfbaO",
-      "weightclass_id": 1,
-      "promotion_id": 1
+      "weightclass_id": 2,
+        "promotion_id": 1
     },
     {
       "nickname": "",
@@ -438,13 +438,13 @@
       "ssbTB": "17%",
       "ssbTL": "15%",
       "img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2022-03/5b6e3467-269a-4dbe-8ed4-b13b540390b5%252FSIMON_RICKY_L_12-18.png?itok=FGrgo93n",
-      "weightclass_id": 1,
-      "promotion_id": 1
+      "weightclass_id": 2,
+        "promotion_id": 1
     },
     {
       "nickname": "Sugar",
       "name": "Sean O'Malley",
-      "ranking": "13",
+      "ranking": "#13",
       "fight_record": "15-1-0 (W-L-D)",
       "age": "27",
       "height": "71.00",
@@ -472,8 +472,8 @@
       "ssbTB": "21%",
       "ssbTL": "8%",
       "img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-07/69222%252Fprofile-galery%252Ffullbodyleft-picture%252FO%2527MALLEY_SEAN_L_07-10.png?itok=iTjZeeCn",
-      "weightclass_id": 1,
-      "promotion_id": 1
+      "weightclass_id": 2,
+        "promotion_id": 1
     },
     {
       "nickname": "Tank",
@@ -506,8 +506,8 @@
       "ssbTB": "14%",
       "ssbTL": "20%",
       "img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2022-03/2b830d04-ea6c-42e5-94c9-6dfa4a5dcbeb%252FSHORE_JACK_L_03-19.png?itok=iDmLG6-j",
-      "weightclass_id": 1,
-      "promotion_id": 1
+      "weightclass_id": 2,
+        "promotion_id": 1
     },
     {
       "nickname": "",
@@ -540,7 +540,7 @@
       "ssbTB": "17%",
       "ssbTL": "30%",
       "img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2022-03/43af8d8c-2116-4ae1-85b3-ffb57c7005a8%252FASSUNCAO_RAPHAEL_L_12-18.png?itok=Z7kx3N20",
-      "weightclass_id": 1,
-      "promotion_id": 1
+      "weightclass_id": 2,
+        "promotion_id": 1
     }
 ]

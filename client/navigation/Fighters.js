@@ -7,7 +7,7 @@ export default function Fighters ({navigation}) {
     const[weightclass,setWeightclass] = useState();
     useEffect(() => {
         (async() => {
-            let req = await fetch('http://localhost:3000/weightclasses')
+            let req = await fetch('http://127.0.0.1:3000/weightclasses')
             let res = await req.json()
             setWeightclass(res)
         })()   
