@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React,{useState,useEffect} from 'react';
 import { View,Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -8,11 +8,19 @@ import Versus from './Versus';
 import Fighters from './Fighters';
 
 const versus = 'Versus';
-const fighters = 'Fighters';
+const fightersPage = 'Fighters';
 
 const Tab = createBottomTabNavigator();
 
 export default function MainContainer(){
+    const[fighters, setFighters] = useState([])
+    useEffect(() => {
+        (async() => {
+            let req = await fetch('http://localhost:3000/fighters')
+            let res = await req.json()
+            setFighters(res)
+        })()   
+       }, [])
 return (
     <NavigationContainer>
         <Tab.Navigator
@@ -25,7 +33,7 @@ return (
                   if (rn === versus) {
                       iconName = focused ? 'home' : 'home-outline'
                   }
-                  else if (rn === fighters) {
+                  else if (rn === fightersPage) {
                       iconName = focused ? 'list' : 'list-outline'
                   }
 
@@ -41,8 +49,9 @@ return (
         
         >
 
-            <Tab.Screen name={versus} component={Versus}/>
-            <Tab.Screen name={fighters} component={Fighters}/>
+            <Tab.Screen name={versus} children={() => <Versus fighters={fighters}/>}
+            />
+            <Tab.Screen name={fightersPage} children={() => <Fighters fighters={fighters}/>}/>
 
         </Tab.Navigator>
     </NavigationContainer>
