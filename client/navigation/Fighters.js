@@ -5,13 +5,17 @@ import {Picker} from '@react-native-picker/picker';
 
 export default function Fighters ({navigation}) {
     const[weightclass,setWeightclass] = useState();
-    useEffect(() => {
-        (async() => {
-            let req = await fetch('http://127.0.0.1:3000/weightclasses')
-            let res = await req.json()
-            setWeightclass(res)
-        })()   
-       }, [])
+    // useEffect(() => {
+    //     try {
+    //     (async() => {
+    //         let req = await fetch('http://127.0.0.1:3000/weightclasses')
+    //         let res = await req.json()
+    //         setFighters(res)
+    //     })()  }
+    //     catch (error) {
+    //         console.log(error)
+    //     }
+    //    }, [])
 
     return(
         <View style={{ flex: 1, alignItems:'center', justifyContent: 'center'}}>

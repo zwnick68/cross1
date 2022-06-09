@@ -13,11 +13,11 @@ export default function FighterGrid({fighters}) {
     
 
    const _renderItem = ({item, index}) => {
-     console.log(item.img)
+    //  console.log(item.img)
        return (
            <View style={styles.item}>
-    <Image resizeMode="contain" source={item.img} style={{width: '150px', height: '150px'}} />
-        <Text style={styles.title}>{item.name}</Text>
+    <Image source={{uri:item.img}} style={styles.images} />
+        {/* <Text style={styles.title}>{item.name}</Text> */}
         </View>
        )
        
@@ -27,7 +27,7 @@ export default function FighterGrid({fighters}) {
         <View>
             <FlatList style={styles.container}
                 data={fighters}
-                numColumns={4}
+                numColumns={8}
                 renderItem={_renderItem}
             />
             </View>
@@ -36,17 +36,23 @@ export default function FighterGrid({fighters}) {
     }
 const styles = StyleSheet.create ({
     container: {
-        flex: 1,
-        marginBottom: 500,
+        // flex: 1,
+        // marginBottom: 500,
+        display:'flex',
+        // flexDirection: 'vertical',
       },
       item: {
         backgroundColor: 'purple',
-        padding: 15,
-        marginVertical: 4,
-        marginHorizontal: 16,
+        padding: 4,
+        marginVertical: 1,
+        marginHorizontal: 1,
       },
       title: {
-        fontSize: 16,
+        fontSize: 6,
         color: 'white',
+      },
+      images: {
+          height: 70,
+          width: 39
       },
     });

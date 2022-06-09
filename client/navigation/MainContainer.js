@@ -1,30 +1,39 @@
 import React,{useState,useEffect} from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Settings,StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons } from '@expo/vector-icons';
-//screens
-import Versus from './Versus';
-import Fighters from './Fighters';
+import { Ionicons,AntDesign,Entypo } from '@expo/vector-icons';
+import Versus from './Versus'
+import Fighters from './Fighters'
 
-const versus = 'Versus';
-const fightersPage = 'Fighters';
+const versus = 'Versus'
+const fightersPage = 'Fighters'
+const settings = "Settings"
+const news = "News"
 
 const Tab = createBottomTabNavigator();
 
 export default function MainContainer(){
-    const[fighters, setFighters] = useState([])
-    useEffect(() => {
-        (async() => {
-            let req = await fetch('http://127.0.0.1:3000/fighters')
-            if (req.ok){
-            let res = await req.json()
-            setFighters(res)}
-            else (req.catch(error)) 
-        })()   
-       }, [])
+    
+    const [fighters, setFighters] = useState([])
+  
+  useEffect(() => {
+    const request = async () => {
+      // https://jsonplaceholder.typicode.com/todos/1
+      // http://172.29.109.163:3000/fighters
+      let req = await fetch('http://172.29.109.163:3000/fighters')
+      let res = await req.json()
+    //   console.log('response', res[0])
+      if (req.ok) {
+        return setFighters(res)
+      } else {
+        Alert.alert('Request failed')
+      }
+    }
+    request()
+   }, [])
 return (
-    <NavigationContainer>
+    <NavigationContainer style={styles.background}>
         <Tab.Navigator
         initialRouteName={versus}
         screenOptions={({route}) =>({
@@ -38,24 +47,38 @@ return (
                   else if (rn === fightersPage) {
                       iconName = focused ? 'list' : 'list-outline'
                   }
+                  else if (rn === settings) {
+                      iconName = focused ? 'settings' : 'settings-outline'
+                  }
+                  else if (rn === news) {
+                    iconName = focused ? 'settings' : 'settings-outline'
+                }
 
                   return <Ionicons name={iconName} size={size} color={color}/>
               },  
         }) }
                 tabBarOptions={{
-                    activeTintColor: 'tomato', 
+                    activeTintColor: 'purple', 
                     inactiveTintColor: 'grey', 
                     labelStyle: { paddingBottom: 10, fontSize: 10}, 
-                    style: {padding: 10, height: 70}
+                    style: {padding: 10, height: 70},
+                    activeBackgroundColor: "black"
                 }}
         
         >
-
-            <Tab.Screen style= {{alignItems: 'center'}} name={versus} children={() => <Versus fighters={fighters}/>}
-            />
+            
+            <Tab.Screen name={news} children={() => <News/>}/>
             <Tab.Screen name={fightersPage} children={() => <Fighters fighters={fighters}/>}/>
+            <Tab.Screen name={versus} children={() => <Versus fighters={fighters}/>}/>
+            <Tab.Screen name={settings} children={() => <Settings/>}/>
 
         </Tab.Navigator>
     </NavigationContainer>
 )}
+
+const styles = StyleSheet.create({
+    background: {
+        backgroundColor: 'black'
+    }
+})
 

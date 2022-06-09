@@ -4,7 +4,7 @@ import FighterGrid from './FighterGrid';
 
 
 export default function Versus ({navigation,fighters}) {
-    console.log(fighters)
+    // console.log(fighters)
     return(
         <View style={{ flex: 1, alignItems:'center', justifyContent: 'center'}}>
             {/* <Text 
