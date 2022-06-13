@@ -1,45 +1,92 @@
-import React, { Fragment } from 'react'
-import { render } from 'react-dom'
+import React, {useRef,useState, useEffect} from 'react'
 import {
     StyleSheet, 
     Text,
     FlatList, 
     Image, 
     View,
-    StatusBar
+    PanResponder, 
+    Animated,
+    TouchableHighlight, 
+    RefreshControl,
+    ActivityIndicator, 
+    Platform, 
+    Modal
 } from 'react-native'
+import ShowFighter from './ShowFighter'
+import DropDown from './DropDown'
+// import Animated from 'react-native-reanimated'
 
-export default function FighterGrid({fighters}) {
-    
 
-   const _renderItem = ({item, index}) => {
-    //  console.log(item.img)
-       return (
-           <View style={styles.item}>
-    <Image source={{uri:item.img}} style={styles.images} />
-        {/* <Text style={styles.title}>{item.name}</Text> */}
-        </View>
-       )
+export default function FighterGrid() {
+  const [fighters, setFighters] = useState([])
+  const [visible, setVisible] = useState(false)
+  const [selectedFighter, setSelectedFighter] = useState([])
+  useEffect(() => {
+    const request = async () => {
+      let req = await fetch('http://172.29.99.228:3000/fighters')
+      let res = await req.json()
+      if (req.ok) {
+        return setFighters(res)
+      } else {
+        Alert.alert('Request failed')
+      }
+    }
+    request()
+   }, [])
+
+   
+  //  const displayfighter = async(id) => {
+  //   async() => {
+  //     let req = await fetch(`http://172.29.99.228:3000/fighters/${item.id}`)
+  //      let res = await req.json()
+  //      if (req.ok) {
+  //        return setFighters(res)
+  //        } else {
+  //          Alert.alert('Request failed')
+  //             } }}
+     
+  //  }
+ 
+   const _renderItem = ({item}) => {
+     
+       
        
     }
+
+    // const displayfighter = () => {
+    //   return (
+    //     <View>
+           
+    //     <Text style={styles.title}>{fighters.name}</Text>
+        
+    //     </View>
+    //    )
+
+    // }
     
     return (
-        <View>
-            <FlatList style={styles.container}
+        <View style={styles.container}>
+            <FlatList
                 data={fighters}
+                // onDragEnd={({fighters}) => setFighters(fighters)}
                 numColumns={8}
-                renderItem={_renderItem}
+                renderItem={({item}) => <ShowFighter fighters={item} setVisible={setVisible} setSelectedFighter={setSelectedFighter}/>}
+                keyExtractor={(item) => item.id}
+                // ListFooterComponent={displayfighter}
             />
+              <DropDown visible={visible} setVisible={setVisible} selectedFighter={selectedFighter}></DropDown>
             </View>
+            
         
     )
     }
 const styles = StyleSheet.create ({
     container: {
-        // flex: 1,
+        flex: 1,
         // marginBottom: 500,
         display:'flex',
-        // flexDirection: 'vertical',
+        // flexDirection: 'row',
       },
       item: {
         backgroundColor: 'purple',
@@ -48,8 +95,9 @@ const styles = StyleSheet.create ({
         marginHorizontal: 1,
       },
       title: {
-        fontSize: 6,
-        color: 'white',
+        flex: 2,
+        fontSize: 30,
+        color: 'black',
       },
       images: {
           height: 70,

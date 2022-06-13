@@ -15,23 +15,7 @@ const Tab = createBottomTabNavigator();
 
 export default function MainContainer(){
     
-    const [fighters, setFighters] = useState([])
-  
-  useEffect(() => {
-    const request = async () => {
-      // https://jsonplaceholder.typicode.com/todos/1
-      // http://172.29.109.163:3000/fighters
-      let req = await fetch('http://172.29.109.163:3000/fighters')
-      let res = await req.json()
-    //   console.log('response', res[0])
-      if (req.ok) {
-        return setFighters(res)
-      } else {
-        Alert.alert('Request failed')
-      }
-    }
-    request()
-   }, [])
+    
 return (
     <NavigationContainer style={styles.background}>
         <Tab.Navigator
@@ -68,8 +52,8 @@ return (
         >
             
             <Tab.Screen name={news} children={() => <News/>}/>
-            <Tab.Screen name={fightersPage} children={() => <Fighters fighters={fighters}/>}/>
-            <Tab.Screen name={versus} children={() => <Versus fighters={fighters}/>}/>
+            <Tab.Screen name={fightersPage} children={() => <Fighters/>}/>
+            <Tab.Screen name={versus} children={() => <Versus/>}/>
             <Tab.Screen name={settings} children={() => <Settings/>}/>
 
         </Tab.Navigator>

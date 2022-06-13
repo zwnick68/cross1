@@ -8,7 +8,7 @@ export default function Fighters ({navigation}) {
     // useEffect(() => {
     //     try {
     //     (async() => {
-    //         let req = await fetch('http://127.0.0.1:3000/weightclasses')
+    //         let req = await fetch('http://172.29.99.228:3000/fighters')
     //         let res = await req.json()
     //         setFighters(res)
     //     })()  }
