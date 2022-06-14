@@ -18,31 +18,48 @@ import {
 
 
 
-export default function ShowFighter({fighters,setVisible,setSelectedFighter}) {
+export default function ShowFighter({count,setCount,fighters,setVisible,setSelectedFighter, setSecondSelectedFighter, setSecondVisible,selectedFighter,secondSelectedFighter}) {
     
-    // const dropdown = () => {
-    //     // console.log(fighters)
-    //     // return (
-    //     // <View>
-    //     //     <Text style={styles.title}>{fighters.name}</Text>
-    //     // </View>
-    //     // )
-    //     // return(
-    //     Alert.alert(fighters.name)
-    // }
+  const firstFighter = () => {
+    setSelectedFighter(fighters)
+    setVisible(true)
+  }
 
+  const secondFighter = () => {
+    setSecondSelectedFighter(fighters)
+    setSecondVisible(true)
+  }
+
+  // const setCounter = () => {
+  //   setCount(count+1)
+  // }
+  // console.log(count)
     return (
         <View>
-           <TouchableHighlight style={styles.item} onPress={()=> {setSelectedFighter(fighters); setVisible(true)}}>
+           <TouchableHighlight style={styles.item} onPress={() => {
+           if (count % 2 != 0) {firstFighter()
+            // setCount(count+1)
+              }
+            else if (count % 2 == 0)
+            {secondFighter()
+              // setCount(count+1)
+            }
+            
+            setCount(count+1)
+            console.log(count)
+           }
+           }>
     <Image source={{uri:fighters.img}} style={styles.images} />
         {/* <Text style={styles.title}>{item.name}</Text> */}
         </TouchableHighlight>
         </View>
        )
 
-      
+    }
 
-}
+    
+
+
 const styles = StyleSheet.create ({
     container: {
         flex: 1,

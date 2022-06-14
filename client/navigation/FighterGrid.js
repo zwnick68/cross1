@@ -1,4 +1,4 @@
-import React, {useRef,useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import {
     StyleSheet, 
     Text,
@@ -13,18 +13,26 @@ import {
     Platform, 
     Modal
 } from 'react-native'
+
 import ShowFighter from './ShowFighter'
 import DropDown from './DropDown'
-// import Animated from 'react-native-reanimated'
+import DropDownTwo from './DropDownTwo'
+
 
 
 export default function FighterGrid() {
+
   const [fighters, setFighters] = useState([])
   const [visible, setVisible] = useState(false)
   const [selectedFighter, setSelectedFighter] = useState([])
+  const [secondSelectedFighter, setSecondSelectedFighter] = useState([])
+  const [secondVisible, setSecondVisible] = useState(false)
+  const [count, setCount]= useState(2)
+
+
   useEffect(() => {
     const request = async () => {
-      let req = await fetch('http://172.29.99.228:3000/fighters')
+      let req = await fetch('http://172.22.219.116:3000/fighters')
       let res = await req.json()
       if (req.ok) {
         return setFighters(res)
@@ -34,36 +42,6 @@ export default function FighterGrid() {
     }
     request()
    }, [])
-
-   
-  //  const displayfighter = async(id) => {
-  //   async() => {
-  //     let req = await fetch(`http://172.29.99.228:3000/fighters/${item.id}`)
-  //      let res = await req.json()
-  //      if (req.ok) {
-  //        return setFighters(res)
-  //        } else {
-  //          Alert.alert('Request failed')
-  //             } }}
-     
-  //  }
- 
-   const _renderItem = ({item}) => {
-     
-       
-       
-    }
-
-    // const displayfighter = () => {
-    //   return (
-    //     <View>
-           
-    //     <Text style={styles.title}>{fighters.name}</Text>
-        
-    //     </View>
-    //    )
-
-    // }
     
     return (
         <View style={styles.container}>
@@ -71,11 +49,14 @@ export default function FighterGrid() {
                 data={fighters}
                 // onDragEnd={({fighters}) => setFighters(fighters)}
                 numColumns={8}
-                renderItem={({item}) => <ShowFighter fighters={item} setVisible={setVisible} setSelectedFighter={setSelectedFighter}/>}
+                renderItem={({item}) => <ShowFighter count={count} setCount={setCount} fighters={item} setVisible={setVisible} selectedFighter={selectedFighter} secondSelectedFighter={secondSelectedFighter} setSelectedFighter={setSelectedFighter} setSecondSelectedFighter={setSecondSelectedFighter} setSecondVisible={setSecondVisible}/>}
                 keyExtractor={(item) => item.id}
+                
+                
                 // ListFooterComponent={displayfighter}
             />
-              <DropDown visible={visible} setVisible={setVisible} selectedFighter={selectedFighter}></DropDown>
+              <DropDown visible={visible} secondVisible={secondVisible} setVisible={setVisible} selectedFighter={selectedFighter} secondSelectedFighter={secondSelectedFighter}></DropDown>
+              <DropDownTwo visible={visible} secondVisible={secondVisible} setVisible={setVisible} selectedFighter={selectedFighter} secondSelectedFighter={secondSelectedFighter}></DropDownTwo>
             </View>
             
         
