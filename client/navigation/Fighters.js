@@ -1,16 +1,21 @@
-import React,{useEffect,useState} from 'react';
-import {View, Text} from 'react-native';
+import React,{useRef,useEffect,useState} from 'react';
+import {View, Text,ScrollView,Modal} from 'react-native';
 import ModalSelector from 'react-native-modal-selector'
+import ScrollList from './ScrollList';
+import {Picker} from '@react-native-picker/picker'
 
 
-export default function Fighters ({navigation}) {
 
-    const[weightclass,setWeightclass] = useState([]);
+export default function Fighters () {
+
+    const[weightclass,setWeightclass] = useState([])
+    const[id,setID] = useState([])
+    const[visible,setVisible]=useState(false)
 
     useEffect(() => {
         try {
         (async() => {
-            let req = await fetch('http://172.22.219.116:3000/weightclasses')
+            let req = await fetch('http://172.18.146.189:3000/weightclasses')
             let res = await req.json()
             setWeightclass(res)
         })()  }
@@ -18,7 +23,7 @@ export default function Fighters ({navigation}) {
             console.log(error)
         }
        }, [])
-     console.log(weightclass)
+     console.log(weightclass[2])
     //    let index = 0;
         const data = [
            { key: null, section: true, label: 'Choose Weightclass'},
@@ -36,13 +41,44 @@ export default function Fighters ({navigation}) {
            { key: weightclass[11], label: "Womens's Featherweight" }
        ];
 
-    return(
-     
+       const pickerRef = useRef();
+
+        function open() {
+        pickerRef.current.focus();
+        }
+
+        function close() {
+        pickerRef.current.blur();
+        }
+        console.log(id.fighters)
+        return(
+        <View>
         <ModalSelector
                     data={data}
                     initValue="Weightclasses"
-                    visible={false}
-                    onChange={(option)=>{ alert(`${option.key.fighters[0].name} has been chosen`) }}
-                    keyExtractor={(data) => data.key } />
+                    listItemAccessible={true}
+                    accessible={true}
+                    cancelButtonAccessibilityLabel={'Exit'}
+                    keyExtractor={(data) => data.key }
+                    // visible={false}
+                    onChange={(option)=>{setID(option.key.fighters); setVisible(true)}}
+                     />
+
+        <View>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={visible}
+                                        >
+                <View style={{width: '100%',alignItems: 'center', justifyContent:'center', color: 'black'}}>
+                    {id.map((foiters) => {
+                        return (
+                         <Text>{foiters.name}</Text>
+                    )})}
+               
+                </View>
+                </Modal>
+            </View>
+            </View>
     )
 }

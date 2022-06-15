@@ -32,7 +32,7 @@ export default function FighterGrid() {
 
   useEffect(() => {
     const request = async () => {
-      let req = await fetch('http://172.22.219.116:3000/fighters')
+      let req = await fetch('http://172.18.146.189:3000/fighters')
       let res = await req.json()
       if (req.ok) {
         return setFighters(res)
