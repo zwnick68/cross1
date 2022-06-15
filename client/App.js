@@ -8,7 +8,7 @@ export default function App() {
  
   const styles = StyleSheet.create({
     background: {
-      backgroundColor: 'black'
+      backgroundColor: '#000000',
     },
   })
   

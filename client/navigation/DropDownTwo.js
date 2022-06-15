@@ -31,7 +31,7 @@ export default function DropDownTwo({visible,secondvisible,setVisible,selectedFi
 }
 const styles = StyleSheet.create({ 
     container: {
-        flex: 3,
+        flex: 1,
         flexDirection: "row"
     }, 
     name: {

@@ -3,6 +3,7 @@ import {View, Text,ScrollView,Modal} from 'react-native';
 import ModalSelector from 'react-native-modal-selector'
 import ScrollList from './ScrollList';
 import {Picker} from '@react-native-picker/picker'
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 
@@ -15,7 +16,7 @@ export default function Fighters () {
     useEffect(() => {
         try {
         (async() => {
-            let req = await fetch('http://172.18.146.189:3000/weightclasses')
+            let req = await fetch('http://172.21.141.173:3000/weightclasses')
             let res = await req.json()
             setWeightclass(res)
         })()  }
@@ -68,15 +69,25 @@ export default function Fighters () {
                 <Modal
                     animationType="slide"
                     transparent={true}
-                    visible={visible}
-                                        >
-                <View style={{width: '100%',alignItems: 'center', justifyContent:'center', color: 'black'}}>
+                    visible={visible}>
+                    <SafeAreaView> 
+                    <ScrollView>                   
+                <View style={{width: '100%',alignItems: 'center', justifyContent:'center', color: 'black', paddingBottom:'50%'}}>
                     {id.map((foiters) => {
                         return (
+                            <View>
                          <Text>{foiters.name}</Text>
+                         <Text>{foiters.nickname}</Text>
+                         <Text>{foiters.fight_record}</Text>
+                         <Text>{foiters.height}</Text>
+                         <Text>{foiters.weight}</Text>
+                         <Text>{foiters.reach}</Text>
+                         </View>
                     )})}
                
                 </View>
+                </ScrollView>
+                </SafeAreaView> 
                 </Modal>
             </View>
             </View>
