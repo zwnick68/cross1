@@ -5,29 +5,43 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons,AntDesign,Entypo } from '@expo/vector-icons';
 import Versus from './Versus'
 import Fighters from './Fighters'
+import { LinearGradient } from 'expo-linear-gradient';
 
 const versus = 'Versus'
 const fightersPage = 'Fighters'
 const settings = "Settings"
-const news = "News"
+
 
 const Tab = createBottomTabNavigator();
 
 const navTheme = DefaultTheme;
 navTheme.colors.background = 'black'
+navTheme.colors.text = 'white'
+
+
+
 
 export default function MainContainer(){
     
     
 return (
+
     <NavigationContainer theme={navTheme}>
+        <LinearGradient
+        colors={["red", "blue"]}
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 1}}  
+        />
+        
         <Tab.Navigator 
-        initialRouteName={versus}
+        initialRouteName={fightersPage}
         screenOptions={
             
             ({route}) =>({
+
               tabBarIcon: ({focused, color, size}) => {
-                  let iconName;
+                 
+                    let iconName;
                   let rn = route.name;
 
                   if (rn === versus) {
@@ -39,36 +53,54 @@ return (
                   else if (rn === settings) {
                       iconName = focused ? 'settings' : 'settings-outline'
                   }
-                  else if (rn === news) {
-                    iconName = focused ? 'settings' : 'settings-outline'
-                }
 
                   return <Ionicons name={iconName} size={size} color={color}/>
               },  
         }) }
                 tabBarOptions={{
-                    activeTintColor: 'purple', 
+                    activeTintColor: '#5a0b96', 
                     inactiveTintColor: 'grey', 
-                    labelStyle: { paddingBottom: 5, fontSize: 11}, 
+                    labelStyle: { paddingBottom: 5, fontSize: 12.5}, 
                     // style: {padding: 10, height: 70},
                     activeBackgroundColor: "#000000",
                     inactiveBackgroundColor: "#000000",
-                    barStyle: "#000000"
+                    barStyle: "#000000",
+                    position: 'absolute',
+                    fontFamily: 'monospace',
+                    zIndex: 1
                 }}
         
         >
             
-            {/* <Tab.Screen style={styles.background} name={news} children={() => <News/>}/> */}
-            <Tab.Group screenOptions={{ headerStyle: { backgroundColor: 'purple' } }}>
-            <Tab.Screen style={styles.background} name={fightersPage} children={() => <Fighters/>}/>
-            <Tab.Screen style={styles.background} name={versus} children={() => <Versus/>}/>
-            <Tab.Screen style={styles.background} name={settings} children={() => <Settings/>}/>
+            <Tab.Group 
+            screenOptions={{ 
+                headerStyle: { 
+                    backgroundColor: '#c79522',
+                    height: 60,
+                                }, 
+                headerTitleStyle: {
+                fontFamily: 'monospace',
+                fontWeight: 'bold',
+                color: 'black',
+                paddingBottom: 10,
+                                },
+                            }}>
+            
+            <Tab.Screen name={fightersPage} children={() => <Fighters/>}/>
+            <Tab.Screen name={versus} children={() => <Versus/>}/>
+            <Tab.Screen name={settings} children={() => <Settings/>}/>
+
             </Tab.Group>
+        
         </Tab.Navigator >
+
     </NavigationContainer>
 )}
 
 const styles = StyleSheet.create({
+    baseText: {
+        fontFamily: 'monospace'
+},
     background: {
         justifyContent: 'center'
     },

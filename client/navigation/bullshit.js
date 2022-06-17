@@ -32,3 +32,29 @@
         //     </View>
         //     )
         // })}}
+
+        // <View>
+        //     <View style={{flex:1, justifyContent:'space-around', padding:10, backgroundColor: '#1f181e'}} >
+        // <ModalSelector
+        //             data={data}
+        //             initValue="Weightclasses"
+        //             // listItemAccessible={true}
+        //             // accessible={true}
+        //             // cancelButtonAccessibilityLabel={'Exit'}
+        //             keyExtractor={(data) => data.key }
+        //             visible={selector}
+        //             onModalOpen={()=>setSelector(false)}
+        //             onModalClose={()=>setSelector(false)}
+        //             onChange={(option)=>{setID(option.key.fighters); 
+        //             setSelector(selector)
+        //             setVisible(!visible)}}
+                    
+                    
+        //              />
+        //         </View>
+        // <View style={styles.modalContainer}>
+                
+        //         <Modal 
+        //             animationType="slide"
+        //             transparent={true}
+        //             visible={visible}>

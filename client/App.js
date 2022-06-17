@@ -1,21 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View,Image,TextInput, Scroll, Alert } from 'react-native';
 import { useEffect, useState } from 'react';
+import { LinearGradient } from 'expo-linear-gradient';
 
 import MainContainer from './navigation/MainContainer';
 
 export default function App() {
- 
-  const styles = StyleSheet.create({
-    background: {
-      backgroundColor: '#000000',
-    },
-  })
   
   return (
     
-   <MainContainer styles={styles.background}>
-     <View styles={styles.background}>
+   <MainContainer>
+     <View>
+     
 
      </View>
    </MainContainer>
