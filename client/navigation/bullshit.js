@@ -58,3 +58,32 @@
         //             animationType="slide"
         //             transparent={true}
         //             visible={visible}>
+
+       //  const onRefresh = () => {
+       //        setRefresh(true)
+       //        setDropDefault(fighters[2])
+       //        setShow(fighters[2].fighters)
+       //        setSelectedFighter(fighters[2].fighters[getRandomIntInclusive(0,15)])
+       //        setSecondSelectedFighter(fighters[2].fighters[getRandomIntInclusive(0,15)])
+       //        setCount(2)
+              
+       //        setRefresh(false)
+       //      }
+
+       // useEffect(() => {
+  //   try {
+  //   (
+  //     async() => {
+  //       let req = await fetch('http://192.168.87.75:3000/weightclasses')
+  //       let res = await req.json()
+  //       setFighters(res)
+  //       setDropDefault(res[2])
+  //       setShow(res[2].fighters)
+  //       setSelectedFighter(res[2].fighters[getRandomIntInclusive(0,15)])
+  //       setSecondSelectedFighter(res[2].fighters[getRandomIntInclusive(0,15)])
+        
+  //   })()  }
+  //   catch (error) {
+  //       console.log(error)
+  //   }
+  //  }, [])

@@ -11,15 +11,13 @@ import {
     RefreshControl,
     ActivityIndicator, 
     Platform, 
-    Modal
+    Modal,  
 } from 'react-native'
 import SelectDropdown from 'react-native-select-dropdown'
 
 import ShowFighter from './ShowFighter'
 import DropDown from './DropDown'
 import DropDownTwo from './DropDownTwo'
-
-
 
 export default function FighterGrid() {
 
@@ -29,36 +27,38 @@ export default function FighterGrid() {
   const [count, setCount]= useState(2)
   const [show, setShow] = useState([])
   const [refresh, setRefresh] = useState(false)
+  const [dropDefault, setDropDefault]= useState([])
 
+  const getRandomIntInclusive = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min); 
+  }
 
-  useEffect(() => {
+   const fetchData = () =>  {
     try {
-    (async() => {
-        let req = await fetch('http://192.168.87.75:3000/weightclasses')
-        let res = await req.json()
-        setFighters(res)
-        setShow(res[2].fighters)
-        setSelectedFighter(res[2].fighters[4])
-        setSecondSelectedFighter(res[2].fighters[7])
-        
-    })()  }
-    catch (error) {
-        console.log(error)
-    }
-   }, [])
-   console.log(fighters)
+        (
+          async() => {
+            let req = await fetch('http://192.168.87.75:3000/weightclasses')
+            let res = await req.json()
+            setFighters(res)
+            setDropDefault(res[2])
+            setShow(res[2].fighters)
+            setSelectedFighter(res[2].fighters[getRandomIntInclusive(0,15)])
+            setSecondSelectedFighter(res[2].fighters[getRandomIntInclusive(0,15)])
+            
+        })()  }
+        catch (error) {
+            console.log(error)
+        }
+       }
 
-    const onRefresh = async () => {
-      setRefresh(true)
-      setSelectedFighter(null)
-      setSecondSelectedFighter(null)
-      setCount(2)
-      await sleep(2000)
-      setRefresh(false)
-    }
+    useEffect(()=> {
+      fetchData()
+    },[])
 
-    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
+    const callRefreshControl = () => {fetchData()}
+    
     return (
       <View>
         <View style={styles.buttonContainer}>
@@ -66,7 +66,7 @@ export default function FighterGrid() {
       <SelectDropdown
             data={fighters}
             defaultButtonText= "Select Weightclass"
-            defaultValue={fighters[2]}
+            defaultValue={dropDefault}
             buttonStyle={styles.button1BtnStyle}
             buttonTextStyle={styles.button1BtnTxtStyle}
             buttonBackgroundColor='#1f181e'
@@ -130,8 +130,12 @@ export default function FighterGrid() {
  <View style={styles.container}>
             <FlatList
                 data={show}
-                // onRefresh={onRefresh}
-                // refreshing={refresh}
+
+                refreshControl= {<RefreshControl 
+                  onRefresh={callRefreshControl}
+                  refreshing={refresh}
+                />}
+                
                 numColumns={8}
 
                 renderItem={({item}) => <ShowFighter

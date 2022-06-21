@@ -69,7 +69,7 @@ export default function ShowFighter({count,setCount,fighters,setSelectedFighter,
   // console.log(fighters.id)
     return (
         <View>
-           <TouchableHighlight style={styles.item} onPress={() => {
+           <TouchableHighlight underlayColor={'#5a0b96'} activeOpacity={0.3} style={styles.item} onPress={() => {
            if (count % 2 == 0) {
             firstFighter()
               }
@@ -79,7 +79,7 @@ export default function ShowFighter({count,setCount,fighters,setSelectedFighter,
             }
             
             setCount(count+1)
-            console.log(count)
+            // console.log(count)
            }
            }>
     <Image source={{uri:fighters.img}} style={styles.images} />
