@@ -28,21 +28,37 @@ export default function FighterGrid() {
   const [secondSelectedFighter, setSecondSelectedFighter] = useState([])
   const [count, setCount]= useState(2)
   const [show, setShow] = useState([])
+  const [refresh, setRefresh] = useState(false)
 
 
   useEffect(() => {
     try {
     (async() => {
-        let req = await fetch('http://172.21.184.66:3000/weightclasses')
+        let req = await fetch('http://192.168.87.75:3000/weightclasses')
         let res = await req.json()
         setFighters(res)
         setShow(res[2].fighters)
+        setSelectedFighter(res[2].fighters[4])
+        setSecondSelectedFighter(res[2].fighters[7])
+        
     })()  }
     catch (error) {
         console.log(error)
     }
    }, [])
-    console.log(fighters)
+   console.log(fighters)
+
+    const onRefresh = async () => {
+      setRefresh(true)
+      setSelectedFighter(null)
+      setSecondSelectedFighter(null)
+      setCount(2)
+      await sleep(2000)
+      setRefresh(false)
+    }
+
+    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
     return (
       <View>
         <View style={styles.buttonContainer}>
@@ -50,7 +66,7 @@ export default function FighterGrid() {
       <SelectDropdown
             data={fighters}
             defaultButtonText= "Select Weightclass"
-            defaultValueByIndex={2}
+            defaultValue={fighters[2]}
             buttonStyle={styles.button1BtnStyle}
             buttonTextStyle={styles.button1BtnTxtStyle}
             buttonBackgroundColor='#1f181e'
@@ -114,8 +130,8 @@ export default function FighterGrid() {
  <View style={styles.container}>
             <FlatList
                 data={show}
-                // onRefresh={() =>  }
-                refreshing={false}
+                // onRefresh={onRefresh}
+                // refreshing={refresh}
                 numColumns={8}
 
                 renderItem={({item}) => <ShowFighter
@@ -133,7 +149,7 @@ export default function FighterGrid() {
                 
             />
             <View style={{alignItems: "center", color: 'white', position: 'absolute', right: 50, left: 50, top: 185}}>
-                <Text style={{color:'#2e2c2e', paddingBottom: 11, fontWeight: 'bold'}}>NAME</Text>
+                <Text style={{color:'#2e2c2e', paddingBottom: 11, fontWeight: 'bold'}}>NAME/RECORD</Text>
                 <Text style={{color:'#2e2c2e', paddingBottom: 11, fontWeight: 'bold'}}>AGE</Text>
                 <Text style={{color:'#2e2c2e', paddingBottom: 11, fontWeight: 'bold'}}>HEIGHT</Text>
                 <Text style={{color:'#2e2c2e', paddingBottom: 11, fontWeight: 'bold'}}>WEIGHT</Text>
@@ -148,9 +164,9 @@ export default function FighterGrid() {
 
                     
                         </View>
-              <DropDown selectedFighter={selectedFighter} secondSelectedFighter={secondSelectedFighter}></DropDown>
+              <DropDown fighters={fighters} setSelectedFighter={setSelectedFighter} selectedFighter={selectedFighter} secondSelectedFighter={secondSelectedFighter}></DropDown>
               
-              <DropDownTwo selectedFighter={selectedFighter} secondSelectedFighter={secondSelectedFighter}></DropDownTwo>
+              <DropDownTwo fighters={fighters} setSecondSelectedFighter={setSecondSelectedFighter} selectedFighter={selectedFighter} secondSelectedFighter={secondSelectedFighter}></DropDownTwo>
               </View>
              
                 

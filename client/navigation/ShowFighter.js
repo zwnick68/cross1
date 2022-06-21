@@ -66,7 +66,7 @@ export default function ShowFighter({count,setCount,fighters,setSelectedFighter,
   // const setCounter = () => {
   //   setCount(count+1)
   // }
-  console.log(fighters.id)
+  // console.log(fighters.id)
     return (
         <View>
            <TouchableHighlight style={styles.item} onPress={() => {

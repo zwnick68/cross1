@@ -18,12 +18,12 @@ import Fighters from './Fighters'
 // import Animated from 'react-native-reanimated'
 
 
-export default function DropDownTwo({visible,secondvisible,setVisible,selectedFighter,secondSelectedFighter}) {
-    // console.log(secondSelectedFighter)
+export default function DropDownTwo({fighters,visible,secondvisible,setVisible,selectedFighter,secondSelectedFighter,setSecondSelectedFighter}) {
+    
    if (secondSelectedFighter) {
         return(
             <View style ={styles.container}>
-                <Text style={styles.name}>{secondSelectedFighter.name}</Text>
+                <Text style={styles.name}>{secondSelectedFighter.name} {secondSelectedFighter.fight_record}</Text>
                 <Text style={styles.age}>{secondSelectedFighter.age}</Text>
                 <Text style={styles.height}>{secondSelectedFighter.height}</Text>
                 <Text style={styles.weight}>{secondSelectedFighter.weight}</Text>
@@ -62,9 +62,9 @@ const styles = StyleSheet.create({
     name: {
         alignItems: 'center',
         paddingTop: 5,
-        paddingLeft: 30,
+        paddingLeft: 10,
         // alignItems: 'flex-start',
-        fontSize: 13,
+        fontSize: 12,
         color: 'white',
         fontStyle: 'larger',
         fontWeight: 'bold',
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     },
     age: {
         paddingTop: 35,
-        paddingLeft: 10,
+        paddingLeft: 14,
         // alignItems: 'flex-start',
         fontSize: 13,
         color: 'white',
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     },
     height: {
         paddingTop: 65,
-        paddingLeft: 1,
+        paddingLeft: 5,
         // alignItems: 'flex-start',
         fontSize: 13,
         color: 'white',
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     },
     reach: {
         paddingTop:125,
-        paddingLeft: 7,
+        paddingLeft: 5,
         // alignItems: 'flex-start',
         fontSize: 13,
         color: 'white',
@@ -113,10 +113,10 @@ const styles = StyleSheet.create({
     },
     legreach: {
         paddingTop: 155,
-        paddingLeft: 10,
+        paddingLeft: 5,
         // alignItems: 'flex-start',
         fontSize: 13,
-        color: 'black',
+        color: 'white',
         fontWeight: 'bold',
         position: 'absolute',
         zIndex: 1
@@ -126,17 +126,17 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         // alignItems: 'flex-start',
         fontSize: 13,
-        color: 'black',
+        color: 'white',
         fontWeight: 'bold',
         position: 'absolute',
         zIndex: 1
     },
     ssacc: {
         paddingTop: 215,
-        paddingLeft: 10,
+        paddingLeft: 11,
         // alignItems: 'flex-start',
         fontSize: 13,
-        color: 'black',
+        color: 'white',
         fontWeight: 'bold',
         position: 'absolute',
         zIndex: 1
@@ -146,39 +146,39 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         // alignItems: 'flex-start',
         fontSize: 13,
-        color: 'black',
+        color: 'white',
         fontWeight: 'bold',
         position: 'absolute',
         zIndex: 1
     },
     tdacc: {
         paddingTop: 273,
-        paddingLeft: 10,
+        paddingLeft: 8,
         // alignItems: 'flex-start',
         fontSize: 13,
         fontWeight: 'bold',
-        color: 'black',
+        color: 'white',
         position: 'absolute',
         zIndex: 1
     },
     subavg: {
         paddingTop: 303,
-        paddingLeft: 10,
+        paddingLeft: 9,
         // alignItems: 'flex-start',
         fontSize: 13,
-        color: 'black',
+        color: 'white',
         fontWeight: 'bold',
         position: 'absolute',
         zIndex: 1
     },
     
     images: {
-        top: 5,
-        height:328,
-        width: 150,
+        top: 22,
+        height:312,
+        width: 100,
         borderBottomLeftRadius: 15,
         borderBottomRightRadius: 15,
-        left: -2,
+        left: 50,
         transform: [{ scaleX: -1 }],
         resizeMode: 'cover',
         
