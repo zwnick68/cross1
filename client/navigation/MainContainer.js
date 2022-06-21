@@ -1,10 +1,12 @@
 import React,{useState,useEffect} from 'react';
-import { View, Text, Settings,StyleSheet } from 'react-native';
+import { View, Text,StyleSheet } from 'react-native';
 import { NavigationContainer,DefaultTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons,AntDesign,Entypo } from '@expo/vector-icons';
 import Versus from './Versus'
 import Fighters from './Fighters'
+import Settings from './Settings'
+
 import { LinearGradient } from 'expo-linear-gradient';
 
 const versus = 'Versus'
@@ -34,7 +36,7 @@ return (
         />
         
         <Tab.Navigator 
-        initialRouteName={fightersPage}
+        initialRouteName={versus}
         screenOptions={
             
             ({route}) =>({
@@ -56,7 +58,9 @@ return (
 
                   return <Ionicons name={iconName} size={size} color={color}/>
               },  
-        }) }
+                            }) 
+                        
+                                }
                 tabBarOptions={{
                     activeTintColor: '#5a0b96', 
                     inactiveTintColor: 'grey', 
@@ -64,10 +68,13 @@ return (
                     // style: {padding: 10, height: 70},
                     activeBackgroundColor: "#000000",
                     inactiveBackgroundColor: "#000000",
-                    barStyle: "#000000",
+                    barStyle: {
+                        color: "#000000",
+                        borderWidth: 10
+                },
                     position: 'absolute',
                     fontFamily: 'monospace',
-                    zIndex: 1
+                    zIndex: 1,
                 }}
         
         >
@@ -75,13 +82,15 @@ return (
             <Tab.Group 
             screenOptions={{ 
                 headerStyle: { 
-                    backgroundColor: '#c79522',
+                    backgroundColor: '#262525',
                     height: 60,
+                    borderBottomLeftRadius:10,
+                    borderBottomRightRadius:10
                                 }, 
                 headerTitleStyle: {
                 fontFamily: 'monospace',
                 fontWeight: 'bold',
-                color: 'black',
+                color: 'white',
                 paddingBottom: 10,
                                 },
                             }}>

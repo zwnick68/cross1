@@ -23,11 +23,15 @@ export default function DropDown({visible,secondvisible,setVisible,selectedFight
     if (selectedFighter) {
         return(
         <View style ={styles.container}>
-            <Text>{selectedFighter.name}</Text>
             <Image source={{uri:selectedFighter.img}} style={styles.images} />
         </View>
         )
     } 
+    else if (selectedFighter==null) {
+        return(
+            <View></View>
+        )
+    }
     
 //    if (secondSelectedFighter) {
 //         return(
@@ -40,15 +44,37 @@ export default function DropDown({visible,secondvisible,setVisible,selectedFight
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        flexDirection: "row-reverse"
+        flexDirection: "column",
+        borderWidth: 1,
+        // borderColor: 'white',
+        borderRadius: 15,
+        borderRightColor: '#2e2c2e',
+        backgroundColor: '#2e2c2e',
+        color: 'white',
+        position: 'absolute',
+        top: 180, 
+        height: 335, 
+        width: 150,
+        alignItems: 'center',
+
     }, 
     name: {
-        fontSize: 30
+        paddingTop: 5,
+        alignItems: 'center',
+        alignContent: 'center',
+        fontSize: 13,
+        color: 'white'
     },
     images: {
-        height: 140,
-          width: 100
+        top: 5,
+        height:328,
+        width: 150,
+        borderBottomLeftRadius: 15,
+        borderBottomRightRadius: 15,
+        right: -2,
+        // transform: [{ scaleX: -1 }],
+        resizeMode: 'cover',
+        zIndex: 1
     }
     
 })

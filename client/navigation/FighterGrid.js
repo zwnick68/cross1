@@ -13,6 +13,7 @@ import {
     Platform, 
     Modal
 } from 'react-native'
+import SelectDropdown from 'react-native-select-dropdown'
 
 import ShowFighter from './ShowFighter'
 import DropDown from './DropDown'
@@ -23,41 +24,139 @@ import DropDownTwo from './DropDownTwo'
 export default function FighterGrid() {
 
   const [fighters, setFighters] = useState([])
-  const [visible, setVisible] = useState(false)
   const [selectedFighter, setSelectedFighter] = useState([])
   const [secondSelectedFighter, setSecondSelectedFighter] = useState([])
-  const [secondVisible, setSecondVisible] = useState(false)
   const [count, setCount]= useState(2)
+  const [show, setShow] = useState([])
 
 
   useEffect(() => {
-    const request = async () => {
-      let req = await fetch('http://172.30.226.139:3000/fighters')
-      let res = await req.json()
-      if (req.ok) {
-        return setFighters(res)
-      } else {
-        Alert.alert('Request failed')
-      }
+    try {
+    (async() => {
+        let req = await fetch('http://172.21.184.66:3000/weightclasses')
+        let res = await req.json()
+        setFighters(res)
+        setShow(res[2].fighters)
+    })()  }
+    catch (error) {
+        console.log(error)
     }
-    request()
    }, [])
-    
+    console.log(fighters)
     return (
-        <View style={styles.container}>
+      <View>
+        <View style={styles.buttonContainer}>
+
+      <SelectDropdown
+            data={fighters}
+            defaultButtonText= "Select Weightclass"
+            defaultValueByIndex={2}
+            buttonStyle={styles.button1BtnStyle}
+            buttonTextStyle={styles.button1BtnTxtStyle}
+            buttonBackgroundColor='#1f181e'
+            statusBarTranslucent={true}
+            // dropdownTextStyle={styles.dropdownTextStyle}
+            rowStyle={styles.rowStyle}
+            rowTextStyle={styles.dropdownTextStyle}
+            // rowStyle={{width:'100%'}}
+            onSelect={(selectedItem, index) => {
+                // console.log(selectedItem.fighters, index)
+                setShow(selectedItem.fighters)
+                setSelectedFighter(null)
+                setSecondSelectedFighter(null)
+            }}
+            rowTextForSelection={(item, index) => {
+
+                const data = [
+                    
+                    'Flyweight',
+                    'Bantamweight',
+                    'Featherweight', 
+                    'Lightweight', 
+                  'Welterweight', ,
+                   'Middleweight',
+                   'Light Heavyweight',
+                'Heavyweight',
+                  "Womens's Strawweight",
+                   "Womens's Flyweight",
+                  "Womens's Bantamweight",
+                     "Womens's Featherweight" 
+                ];
+                for (let i = 0; i < data.length; i++) {
+                item = data[index]
+                return item
+            }
+            }}
+            buttonTextAfterSelection={(item, index) => {
+
+                const data = [
+                    
+                    'Flyweight',
+                    'Bantamweight',
+                    'Featherweight', 
+                    'Lightweight', 
+                  'Welterweight', ,
+                   'Middleweight',
+                   'Light Heavyweight',
+                'Heavyweight',
+                  "Womens's Strawweight",
+                   "Womens's Flyweight",
+                  "Womens's Bantamweight",
+                     "Womens's Featherweight" 
+                ];
+                for (let i = 0; i < data.length; i++) {
+                item = data[index]
+                return item
+            }}}
+            />
+      </View> 
+ 
+ <View style={styles.container}>
             <FlatList
-                data={fighters}
-                // onDragEnd={({fighters}) => setFighters(fighters)}
+                data={show}
+                // onRefresh={() =>  }
+                refreshing={false}
                 numColumns={8}
-                renderItem={({item}) => <ShowFighter count={count} setCount={setCount} fighters={item} setVisible={setVisible} selectedFighter={selectedFighter} secondSelectedFighter={secondSelectedFighter} setSelectedFighter={setSelectedFighter} setSecondSelectedFighter={setSecondSelectedFighter} setSecondVisible={setSecondVisible}/>}
+
+                renderItem={({item}) => <ShowFighter
+
+                count={count} 
+                setCount={setCount} 
+                fighters={item}  
+                selectedFighter={selectedFighter} 
+                secondSelectedFighter={secondSelectedFighter} 
+                setSelectedFighter={setSelectedFighter} 
+                setSecondSelectedFighter={setSecondSelectedFighter} 
+                
+                />}
                 keyExtractor={(item) => item.id}
                 
-                
-                // ListFooterComponent={displayfighter}
             />
-              <DropDown visible={visible} secondVisible={secondVisible} setVisible={setVisible} selectedFighter={selectedFighter} secondSelectedFighter={secondSelectedFighter}></DropDown>
-              <DropDownTwo visible={visible} secondVisible={secondVisible} setVisible={setVisible} selectedFighter={selectedFighter} secondSelectedFighter={secondSelectedFighter}></DropDownTwo>
+            <View style={{alignItems: "center", color: 'white', position: 'absolute', right: 50, left: 50, top: 185}}>
+                <Text style={{color:'#2e2c2e', paddingBottom: 11, fontWeight: 'bold'}}>NAME</Text>
+                <Text style={{color:'#2e2c2e', paddingBottom: 11, fontWeight: 'bold'}}>AGE</Text>
+                <Text style={{color:'#2e2c2e', paddingBottom: 11, fontWeight: 'bold'}}>HEIGHT</Text>
+                <Text style={{color:'#2e2c2e', paddingBottom: 11, fontWeight: 'bold'}}>WEIGHT</Text>
+                <Text style={{color:'#2e2c2e', paddingBottom: 11, fontWeight: 'bold'}}>REACH</Text>
+                <Text style={{color:'#2e2c2e', paddingBottom: 11, fontWeight: 'bold'}}>LEG REACH</Text>
+                <Text style={{color:'#2e2c2e', paddingBottom: 11, fontWeight: 'bold'}}>SIG STR LPM</Text>
+                <Text style={{color:'#2e2c2e', paddingBottom: 11, fontWeight: 'bold'}}>SIG STR ACC</Text>
+                <Text style={{color:'#2e2c2e', paddingBottom: 11, fontWeight: 'bold'}}>TD AVG</Text>
+                <Text style={{color:'#2e2c2e', paddingBottom: 11, fontWeight: 'bold'}}>TD ACC</Text>
+                <Text style={{color:'#2e2c2e', paddingBottom: 11, fontWeight: 'bold'}}>SUB AVG</Text>
+                
+
+                    
+                        </View>
+              <DropDown selectedFighter={selectedFighter} secondSelectedFighter={secondSelectedFighter}></DropDown>
+              
+              <DropDownTwo selectedFighter={selectedFighter} secondSelectedFighter={secondSelectedFighter}></DropDownTwo>
+              </View>
+             
+                
+             
             </View>
+            
             
         
     )
@@ -65,23 +164,62 @@ export default function FighterGrid() {
 const styles = StyleSheet.create ({
     container: {
         flex: 1,
-        // marginBottom: 500,
+        marginTop: 5,
+        // marginBottom: 10,
         display:'flex',
+        // color: 'white'
         // flexDirection: 'row',
-      },
-      item: {
-        backgroundColor: 'purple',
-        padding: 4,
-        marginVertical: 1,
-        marginHorizontal: 1,
-      },
-      title: {
-        flex: 2,
-        fontSize: 30,
-        color: 'black',
       },
       images: {
           height: 70,
           width: 39
       },
+      buttonContainer: {
+        paddingTop: 10,
+          alignItems: 'center'
+      },
+      button1BtnStyle: {
+        width: '70%',
+        height: 35,
+        backgroundColor: '#2e2c2e',
+        borderRadius: 15,
+        borderWidth: 2,
+        borderColor: 'white',
+        color: 'white',
+        
+        
+      }, 
+    button1BtnTxtStyle: {color: 'white', fontFamily: 'monospace'},
+    
+    dropdownTextStyle: {
+        color: 'white', fontFamily: 'monospace'
+    }, 
+    rowStyle: {
+        backgroundColor: '#2e2c2e'
+
+    }, 
+    images: {
+        // flex: 1,
+        height: 350,
+        width: 400, 
+        resizeMode: 'contain',
+        position: 'absolute',
+        top: 8,
+        left: 10,
+        bottom: 200,
+        zIndex: -1
+    }, 
+    statTitles: {
+      // flex:1,
+      alignItems: 'center',
+      flexDirection: 'column', 
+      color: 'white',
+      bottom: 200
+    },
+    statText: {
+     fontSize: 30, 
+     color: 'white',
+     top: 200 
+     
+    }
     });

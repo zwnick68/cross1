@@ -1,7 +1,6 @@
 import React,{useRef,useEffect,useState} from 'react';
 import {View, Text,ScrollView,Modal, StyleSheet,Image,Pressable} from 'react-native';
 import ModalSelector from 'react-native-modal-selector'
-import ScrollList from './ScrollList';
 import {Picker} from '@react-native-picker/picker'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import SelectDropdown from 'react-native-select-dropdown'
@@ -21,7 +20,7 @@ export default function Fighters () {
     useEffect(() => {
         try {
         (async() => {
-            let req = await fetch('http://172.30.226.139:3000/weightclasses')
+            let req = await fetch('http://172.21.184.66:3000/weightclasses')
             let res = await req.json()
             setWeightclass(res)
             setID(res[2].fighters)
@@ -53,13 +52,7 @@ export default function Fighters () {
             <View>
 
       <View style={{alignItems: 'center', paddingTop: 15,}}>
-      <LinearGradient
-        colors={['#6c5ce7', '#ffeaa7']}
-        start={{ x: 0.0, y: 0.25 }}
-        end={{ x: 0.5, y: 1.0 }}
-        locations={[0, 0.5, 0.6]}
-        styles={styles.background}
-      />
+      
 
         <SelectDropdown
             data={weightclass}
@@ -196,8 +189,6 @@ baseText: {
         justifyContent:'center',
         paddingLeft: 10,
         paddingRight: 10
-        
-        
     },
     pressableContainer: {
         // flex: 1,
