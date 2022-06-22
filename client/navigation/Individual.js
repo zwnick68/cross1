@@ -26,7 +26,7 @@ export default function Individual ({foiters}) {
                                             <Text>{display.name}</Text>
                                             <Button onPress={()=> setVisible(false)}
                                             title="Back"
-                                            >exit</Button>
+                                            ></Button>
                                         </View>                 
                                      </Modal>  
                                 </View>
