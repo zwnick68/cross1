@@ -1,10 +1,11 @@
 import React,{useRef,useEffect,useState} from 'react';
-import {View, Text,ScrollView,Modal, StyleSheet,Image,Pressable} from 'react-native';
+import {View, Text,ScrollView,Modal, StyleSheet,Image,Pressable, FlatList} from 'react-native';
 import ModalSelector from 'react-native-modal-selector'
 import {Picker} from '@react-native-picker/picker'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import SelectDropdown from 'react-native-select-dropdown'
 import { LinearGradient } from 'expo-linear-gradient';
+import Individual from './Individual'; 
 
 
 
@@ -14,16 +15,18 @@ export default function Fighters () {
     const[weightclass,setWeightclass] = useState([])
     const[id,setID] = useState([])
     const[visible,setVisible]=useState(false)
-    const [selector,setSelector]=useState(false)
+    const[selector,setSelector]=useState([])
     
     //fetch
     useEffect(() => {
         try {
         (async() => {
-            let req = await fetch('http://192.168.87.75:3000/weightclasses')
+            let req = await fetch('http://172.29.35.84:3000/weightclasses')
             let res = await req.json()
             setWeightclass(res)
             setID(res[2].fighters)
+            setSelector(res[2])
+            console.log(res)
         })()  }
         catch (error) {
             console.log(error)
@@ -51,13 +54,13 @@ export default function Fighters () {
         return(
             <View>
 
-      <View style={{alignItems: 'center', paddingTop: 15,}}>
+      <View style={{alignItems: 'center', paddingTop: 15}}>
       
 
         <SelectDropdown
             data={weightclass}
             defaultButtonText= "Select Weightclass"
-            defaultValueByIndex={2}
+            defaultValue={selector}
             buttonStyle={styles.button1BtnStyle}
             buttonTextStyle={styles.button1BtnTxtStyle}
             buttonBackgroundColor='#1f181e'
@@ -118,34 +121,20 @@ export default function Fighters () {
       </View> 
 
       
-                <ScrollView>
+                <ScrollView style={{marginHorizontal: 10, marginBottom: 40}}>
 
                 <View style={styles.modalContainer}>
-                    {id.map((foiters) => {
-                        console.log(foiters)
-                        return (
-                            <View>
-                        <Pressable onPress={()=> alert("ayoooooo")}>
-                        <View style={styles.pressableContainer}>
-                        <Image source={{uri:foiters.img}} style={styles.images}/>
-                        <View style={styles.textContainer}> 
-                        <Text style ={styles.ranking}>
-                            {`${foiters.ranking}`}
-                        </Text>   
-                         <Text style ={styles.baseText}>
-                            {`${foiters.name}`}
-                         </Text>
-                         <Text style ={styles.nickname}>
-                            {`"${foiters.nickname}"`}
-                         </Text>
-                         <Text style ={styles.baseText}>
-                            {`${foiters.fight_record.replace('(W-L-D)','')}`}
-                         </Text>
-                         </View>
-                         </View>
-                         </Pressable>
-                         </View>
-                    )})}
+                    <FlatList
+                        data={id}
+                        renderItem={({item}) => <Individual
+                        foiters={item}
+
+                    />}
+                        keyExtractor={(item) => item.id}
+                        >
+                    </FlatList>
+                            
+                    
                 </View>
 
            
@@ -232,18 +221,23 @@ baseText: {
         color: 'white', fontFamily: 'monospace'
     }, 
     rowStyle: {
-        backgroundColor: '#2e2c2e'
+        backgroundColor: '#2e2c2e',
+        // marginBottom: 10
 
     }, 
     images: {
         // flex: 1,
-        height: 350,
-        width: 400, 
-        resizeMode: 'contain',
-        position: 'absolute',
-        top: 8,
-        left: 10,
-        bottom: 200,
-        zIndex: -1
+        // height: 350,
+        // width: 400, 
+        // resizeMode: 'contain',
+        // position: 'absolute',
+        // top: 8,
+        // left: 10,
+        // bottom: 200,
+        // zIndex: -1
+        height: 90,
+        width: 90,
+        right: 50,
+        position: 'absolute'
     }
 })

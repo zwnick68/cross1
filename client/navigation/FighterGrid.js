@@ -12,6 +12,7 @@ import {
     ActivityIndicator, 
     Platform, 
     Modal,  
+    SafeAreaView
 } from 'react-native'
 import SelectDropdown from 'react-native-select-dropdown'
 
@@ -39,7 +40,7 @@ export default function FighterGrid() {
     try {
         (
           async() => {
-            let req = await fetch('http://192.168.87.75:3000/weightclasses')
+            let req = await fetch('http://172.29.35.84:3000/weightclasses')
             let res = await req.json()
             setFighters(res)
             setDropDefault(res[2])
@@ -60,7 +61,7 @@ export default function FighterGrid() {
     const callRefreshControl = () => {fetchData()}
     
     return (
-      <View>
+      <SafeAreaView>
         <View style={styles.buttonContainer}>
 
       <SelectDropdown
@@ -168,14 +169,14 @@ export default function FighterGrid() {
 
                     
                         </View>
-              <DropDown fighters={fighters} setSelectedFighter={setSelectedFighter} selectedFighter={selectedFighter} secondSelectedFighter={secondSelectedFighter}></DropDown>
+              <DropDown key={fighters.id} fighters={fighters} setSelectedFighter={setSelectedFighter} selectedFighter={selectedFighter} secondSelectedFighter={secondSelectedFighter}></DropDown>
               
-              <DropDownTwo fighters={fighters} setSecondSelectedFighter={setSecondSelectedFighter} selectedFighter={selectedFighter} secondSelectedFighter={secondSelectedFighter}></DropDownTwo>
+              <DropDownTwo key={fighters.id} fighters={fighters} setSecondSelectedFighter={setSecondSelectedFighter} selectedFighter={selectedFighter} secondSelectedFighter={secondSelectedFighter}></DropDownTwo>
               </View>
              
                 
              
-            </View>
+            </SafeAreaView>
             
             
         

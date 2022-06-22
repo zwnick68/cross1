@@ -10,7 +10,7 @@ export default function Versus ({navigation,fighters}) {
             {/* <Text 
                 onPress={() => navigation.navigate('Fighters')}
                 style={{fontsize: 10, fontWeight: 'bold'}}>Versus</Text> */}
-                   <FighterGrid fighters={fighters}></FighterGrid>    
+                   <FighterGrid key={fighters} fighters={fighters}></FighterGrid>    
         </View>
     )
 }

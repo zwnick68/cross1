@@ -87,3 +87,17 @@
   //       console.log(error)
   //   }
   //  }, [])
+
+//   <View> 
+//                                 <Modal style={{margin: 0}}
+//                                 animationType='slide'
+//                                 visible={visible}
+//                                 hardwareAccelerated={true}
+//                                 onRequestClose={() => {
+//                                 // alert("Modal has been closed.");
+//                                 setVisible(!visible);
+//                                 }}
+//                                 > 
+//                                     <Individual individual={foiters}></Individual>
+//                                 </Modal>  
+//                         </View>

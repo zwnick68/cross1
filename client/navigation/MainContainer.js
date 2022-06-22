@@ -36,7 +36,7 @@ return (
         />
         
         <Tab.Navigator 
-        initialRouteName={versus}
+        initialRouteName={fightersPage}
         screenOptions={
             
             ({route}) =>({
@@ -95,7 +95,7 @@ return (
                                 },
                             }}>
             
-            <Tab.Screen name={fightersPage} children={() => <Fighters/>}/>
+            <Tab.Screen name={fightersPage} children={(yup) => <Fighters key={yup}/>}/>
             <Tab.Screen name={versus} children={() => <Versus/>}/>
             <Tab.Screen name={settings} children={() => <Settings/>}/>
 

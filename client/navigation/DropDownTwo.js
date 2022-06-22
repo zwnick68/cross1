@@ -66,7 +66,6 @@ const styles = StyleSheet.create({
         // alignItems: 'flex-start',
         fontSize: 12,
         color: 'white',
-        fontStyle: 'larger',
         fontWeight: 'bold',
         position: 'absolute',
         zIndex: 1
