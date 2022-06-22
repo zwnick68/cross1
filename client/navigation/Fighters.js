@@ -21,7 +21,7 @@ export default function Fighters () {
     useEffect(() => {
         try {
         (async() => {
-            let req = await fetch('http://172.29.35.84:3000/weightclasses')
+            let req = await fetch('http://172.27.251.189:3000/weightclasses')
             let res = await req.json()
             setWeightclass(res)
             setID(res[2].fighters)
@@ -238,6 +238,7 @@ baseText: {
         height: 90,
         width: 90,
         right: 50,
-        position: 'absolute'
+        position: 'absolute',
+        
     }
 })
