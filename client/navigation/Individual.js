@@ -13,7 +13,7 @@ export default function Individual ({foiters}) {
                             {setVisible(true)
                             setDisplay(foiters)
                             console.log(display)}}>
-                            <View > 
+                            <View> 
                             
                                     <Modal
                                      animationType='fade'

@@ -21,7 +21,7 @@ export default function Fighters () {
     useEffect(() => {
         try {
         (async() => {
-            let req = await fetch('http://172.27.251.189:3000/weightclasses')
+            let req = await fetch('http://172.25.108.34:3000/weightclasses')
             let res = await req.json()
             setWeightclass(res)
             setID(res[2].fighters)
@@ -82,7 +82,7 @@ export default function Fighters () {
                     'Bantamweight',
                     'Featherweight', 
                     'Lightweight', 
-                  'Welterweight', ,
+                  'Welterweight',
                    'Middleweight',
                    'Light Heavyweight',
                 'Heavyweight',
@@ -104,7 +104,7 @@ export default function Fighters () {
                     'Bantamweight',
                     'Featherweight', 
                     'Lightweight', 
-                  'Welterweight', ,
+                  'Welterweight',
                    'Middleweight',
                    'Light Heavyweight',
                 'Heavyweight',

@@ -27,15 +27,10 @@ export default function MainContainer(){
     
     
 return (
-
+    
     <NavigationContainer theme={navTheme}>
-        <LinearGradient
-        colors={["red", "blue"]}
-        start={{x: 0, y: 0}}
-        end={{x: 1, y: 1}}  
-        />
-        
-        <Tab.Navigator 
+    
+    <Tab.Navigator 
         initialRouteName={fightersPage}
         screenOptions={
             

@@ -40,7 +40,7 @@ export default function FighterGrid() {
     try {
         (
           async() => {
-            let req = await fetch('http://172.27.251.189:3000/weightclasses')
+            let req = await fetch('http://172.25.108.34:3000/weightclasses')
             let res = await req.json()
             setFighters(res)
             setDropDefault(res[2])
@@ -90,7 +90,7 @@ export default function FighterGrid() {
                     'Bantamweight',
                     'Featherweight', 
                     'Lightweight', 
-                  'Welterweight', ,
+                  'Welterweight', 
                    'Middleweight',
                    'Light Heavyweight',
                 'Heavyweight',
@@ -112,7 +112,7 @@ export default function FighterGrid() {
                     'Bantamweight',
                     'Featherweight', 
                     'Lightweight', 
-                  'Welterweight', ,
+                  'Welterweight',
                    'Middleweight',
                    'Light Heavyweight',
                 'Heavyweight',
