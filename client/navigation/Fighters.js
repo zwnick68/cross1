@@ -21,7 +21,7 @@ export default function Fighters () {
     useEffect(() => {
         try {
         (async() => {
-            let req = await fetch('http://172.22.103.217:3000/weightclasses')
+            let req = await fetch('http://192.168.56.1:3000/weightclasses')
             let res = await req.json()
             setWeightclass(res)
             setID(res[2].fighters)
