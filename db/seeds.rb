@@ -1,3 +1,9 @@
+flyweight = JSON.parse(File.read('db/FighterJSON/flyweight.json'))
+flyweight.each do |record|
+    Fighter.create!(record)
+end
+
+
 bantamweight = JSON.parse(File.read('db/FighterJSON/bantamweight.json'))
 bantamweight.each do |record|
     Fighter.create!(record)
@@ -7,6 +13,37 @@ featherweight = JSON.parse(File.read('db/FighterJSON/featherweight.json'))
 featherweight.each do |record|
     Fighter.create!(record)
 end
+
+lightweight = JSON.parse(File.read('db/FighterJSON/lightweight.json'))
+lightweight.each do |record|
+    Fighter.create!(record)
+end
+
+welterweight = JSON.parse(File.read('db/FighterJSON/welterweight.json'))
+welterweight.each do |record|
+    Fighter.create!(record)
+end
+
+middleweight = JSON.parse(File.read('db/FighterJSON/middleweight.json'))
+middleweight.each do |record|
+    Fighter.create!(record)
+end
+
+lightHeavyweight = JSON.parse(File.read('db/FighterJSON/lightheavyweight.json'))
+lightHeavyweight.each do |record|
+    Fighter.create!(record)
+end
+
+heavyweight = JSON.parse(File.read('db/FighterJSON/heavyweight.json'))
+heavyweight.each do |record|
+    Fighter.create!(record)
+end
+
+strawweight = JSON.parse(File.read('db/FighterJSON/strawweight.json'))
+strawweight.each do |record|
+    Fighter.create!(record)
+end
+
 
 Promotion.create(name: "UFC")
 Weightclass.create(name: "Flyweight", weight: 125)

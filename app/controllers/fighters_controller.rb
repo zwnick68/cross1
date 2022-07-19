@@ -1,6 +1,6 @@
 class FightersController < ApplicationController
-    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+    # rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+    # rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     def index
         render json: Fighter.all
     end
@@ -28,7 +28,7 @@ class FightersController < ApplicationController
     end
 
     def find_fighter
-        Fighter.find_by(params[:id])
+        Fighter.find(params[:id])
     end
 
     def fighter_params

@@ -40,7 +40,7 @@ export default function FighterGrid() {
     try {
         (
           async() => {
-            let req = await fetch('http://172.25.108.34:3000/weightclasses')
+            let req = await fetch('http://172.22.103.217:3000/weightclasses')
             let res = await req.json()
             setFighters(res)
             setDropDefault(res[2])
